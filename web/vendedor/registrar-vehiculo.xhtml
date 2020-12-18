@@ -6,6 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
         <ui:composition template="/WEB-INF/template/estrutura.xhtml">
+            <ui:param name="nombreUsuario" value="#{usuarioSession.usuingresar.usulogin} "></ui:param>
             
             <ui:define name="menuVertical">
                 <ui:include src="menuvertical/menuVertical.xhtml"></ui:include>

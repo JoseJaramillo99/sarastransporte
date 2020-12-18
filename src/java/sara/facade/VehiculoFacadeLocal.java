@@ -11,7 +11,7 @@ import sara.entity.Vehiculo;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Local
 public interface VehiculoFacadeLocal {
@@ -29,7 +29,5 @@ public interface VehiculoFacadeLocal {
     List<Vehiculo> findRange(int[] range);
 
     int count();
-
-    public List<Vehiculo> listaVehiculosporcategoria(int caid);
     
 }

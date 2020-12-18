@@ -13,7 +13,7 @@ import sara.entity.Usuario;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFacadeLocal {
@@ -29,7 +29,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
+
     @Override
     public Usuario loginUsuario(String usuarioIn, String passIn) {
         try {

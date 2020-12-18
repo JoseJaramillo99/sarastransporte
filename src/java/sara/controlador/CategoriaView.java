@@ -8,14 +8,12 @@ package sara.controlador;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.mail.Part;
 import sara.entity.Categoria;
-import sara.entity.Vehiculo;
 import sara.facade.CategoriaFacadeLocal;
 import sara.facade.VehiculoFacadeLocal;
 
@@ -61,14 +59,7 @@ public class CategoriaView implements Serializable{
         }
     }
     
-    public List<Vehiculo> listaVehiculos() {
-        try {
-            return vehiculoFacadeLocal.listaVehiculosporcategoria(categoriaSelect.getCaid());
-        } catch (Exception e) {
-            System.out.println("edu.webapp1966781b.controlador.CategoriasView.listaProductos() " + e.getMessage());
-            return new ArrayList<>();
-        }
-    }
+   
 
     public VehiculoFacadeLocal getVehiculoFacadeLocal() {
         return vehiculoFacadeLocal;

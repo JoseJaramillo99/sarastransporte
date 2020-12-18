@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Entity
 @Table(name = "rol")
@@ -36,8 +38,8 @@ public class Rol implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "rolid")
     private Integer rolid;
     @Basic(optional = false)
@@ -45,9 +47,12 @@ public class Rol implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "roltipo")
     private String roltipo;
+    @Size(max = 50)
+    @Column(name = "ruta")
+    private String ruta;
     @JoinTable(name = "usuario_has_rol", joinColumns = {
-        @JoinColumn(name = "rol_rolid", referencedColumnName = "rolid")}, inverseJoinColumns = {
-        @JoinColumn(name = "usuario_usuid", referencedColumnName = "usuid")})
+        @JoinColumn(name = "rolid", referencedColumnName = "rolid")}, inverseJoinColumns = {
+        @JoinColumn(name = "usuid", referencedColumnName = "usuid")})
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Usuario> usuarioCollection;
 
@@ -77,6 +82,14 @@ public class Rol implements Serializable {
 
     public void setRoltipo(String roltipo) {
         this.roltipo = roltipo;
+    }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public void setRuta(String ruta) {
+        this.ruta = ruta;
     }
 
     @XmlTransient

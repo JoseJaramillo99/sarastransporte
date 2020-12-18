@@ -17,22 +17,27 @@ and open the template in the editor.
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
 
-                    <h5 class="centered">SARAS TRANSPORTE</h5>
-
+                    <h5 class="centered">#{nombreUsuario}</h5>
+                    <li class="sub"><a href="../principal/index.xhtml">Principal</a></li>
+                    
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-cogs"></i>
                             <span>Comprador</span>
                         </a>
+                        
+                            
+                        
                         <ul class="sub">
                             <li><a href="consultarCategoria.xhtml">Consultar categorias</a></li>
-                            
-
+                            <li><a href="consultarPrecio.xhtml">Consultar Precios</a></li>
                         </ul>
                     </li>
-
                     <li>
-                        <a class="fa fa-power-off" href="/../sarastransporte/index.xhtml">Salir</a>
+                        <h:form id="salir">  
+                            <h:commandLink class="fa fa-power-off"  action="#{usuarioSession.cerraSesion()}" >Salir</h:commandLink>
+                        </h:form>
+                        
                     </li>
                 </ul>
                 <!-- sidebar menu end-->

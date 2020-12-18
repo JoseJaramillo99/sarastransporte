@@ -8,9 +8,9 @@ package sara.entity;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Entity
 @Table(name = "vehiculo")
@@ -32,65 +32,52 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Vehiculo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected VehiculoPK vehiculoPK;
+    @Id
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 10)
+    @Column(name = "vehplaca")
+    private String vehplaca;
     @Column(name = "vehmodelo")
-    private int vehmodelo;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
+    private Integer vehmodelo;
+    @Size(max = 50)
     @Column(name = "vehmarca")
     private String vehmarca;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @Size(max = 30)
     @Column(name = "vehestado")
     private String vehestado;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "vehprecio")
-    private int vehprecio;
-    @JoinColumn(name = "categoria_caid", referencedColumnName = "caid", insertable = false, updatable = false)
+    private Integer vehprecio;
+    @Size(max = 45)
+    @Column(name = "color")
+    private String color;
+    @JoinColumn(name = "caid", referencedColumnName = "caid")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Categoria categoria;
-    @JoinColumn(name = "datospersonales_datid", referencedColumnName = "datid", insertable = false, updatable = false)
+    private Categoria caid;
+    @JoinColumn(name = "datid", referencedColumnName = "datid")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Datospersonales datospersonales;
+    private Datospersonales datid;
 
     public Vehiculo() {
     }
 
-    public Vehiculo(VehiculoPK vehiculoPK) {
-        this.vehiculoPK = vehiculoPK;
+    public Vehiculo(String vehplaca) {
+        this.vehplaca = vehplaca;
     }
 
-    public Vehiculo(VehiculoPK vehiculoPK, int vehmodelo, String vehmarca, String vehestado, int vehprecio) {
-        this.vehiculoPK = vehiculoPK;
-        this.vehmodelo = vehmodelo;
-        this.vehmarca = vehmarca;
-        this.vehestado = vehestado;
-        this.vehprecio = vehprecio;
+    public String getVehplaca() {
+        return vehplaca;
     }
 
-    public Vehiculo(String vehplaca, int datospersonalesDatid, int categoriaCaid) {
-        this.vehiculoPK = new VehiculoPK(vehplaca, datospersonalesDatid, categoriaCaid);
+    public void setVehplaca(String vehplaca) {
+        this.vehplaca = vehplaca;
     }
 
-    public VehiculoPK getVehiculoPK() {
-        return vehiculoPK;
-    }
-
-    public void setVehiculoPK(VehiculoPK vehiculoPK) {
-        this.vehiculoPK = vehiculoPK;
-    }
-
-    public int getVehmodelo() {
+    public Integer getVehmodelo() {
         return vehmodelo;
     }
 
-    public void setVehmodelo(int vehmodelo) {
+    public void setVehmodelo(Integer vehmodelo) {
         this.vehmodelo = vehmodelo;
     }
 
@@ -110,34 +97,42 @@ public class Vehiculo implements Serializable {
         this.vehestado = vehestado;
     }
 
-    public int getVehprecio() {
+    public Integer getVehprecio() {
         return vehprecio;
     }
 
-    public void setVehprecio(int vehprecio) {
+    public void setVehprecio(Integer vehprecio) {
         this.vehprecio = vehprecio;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public String getColor() {
+        return color;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public Datospersonales getDatospersonales() {
-        return datospersonales;
+    public Categoria getCaid() {
+        return caid;
     }
 
-    public void setDatospersonales(Datospersonales datospersonales) {
-        this.datospersonales = datospersonales;
+    public void setCaid(Categoria caid) {
+        this.caid = caid;
+    }
+
+    public Datospersonales getDatid() {
+        return datid;
+    }
+
+    public void setDatid(Datospersonales datid) {
+        this.datid = datid;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (vehiculoPK != null ? vehiculoPK.hashCode() : 0);
+        hash += (vehplaca != null ? vehplaca.hashCode() : 0);
         return hash;
     }
 
@@ -148,7 +143,7 @@ public class Vehiculo implements Serializable {
             return false;
         }
         Vehiculo other = (Vehiculo) object;
-        if ((this.vehiculoPK == null && other.vehiculoPK != null) || (this.vehiculoPK != null && !this.vehiculoPK.equals(other.vehiculoPK))) {
+        if ((this.vehplaca == null && other.vehplaca != null) || (this.vehplaca != null && !this.vehplaca.equals(other.vehplaca))) {
             return false;
         }
         return true;
@@ -156,7 +151,7 @@ public class Vehiculo implements Serializable {
 
     @Override
     public String toString() {
-        return "sara.entity.Vehiculo[ vehiculoPK=" + vehiculoPK + " ]";
+        return "sara.entity.Vehiculo[ vehplaca=" + vehplaca + " ]";
     }
     
 }

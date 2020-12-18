@@ -36,7 +36,7 @@
             *********************************************************************************************************************************************************** -->
         <div id="login-page">
             <div class="container">
-                <!--
+                
                 <h:form class="form-login" >
                     <h2 class="form-login-heading">sign in now</h2>
                     <div class="login-wrap">
@@ -45,12 +45,7 @@
 
                         <br/>
                         <h:inputSecret  value="#{usuarioSession.passIn}" class="form-control" html5:placeholder="Clave"/>
-                        <label class="checkbox">
-                            <input type="checkbox" value="remember-me"/> Remember me
-                            <span class="pull-right">
-                                <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
-                            </span>
-                        </label>
+                        <br/>
                         <h:commandButton action="#{usuarioSession.inicioSession()}" class="btn btn-theme btn-block" value="SIGN IN"/>
                         <hr/>
                         <div class="login-social-link centered">
@@ -58,18 +53,13 @@
                             <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
                             <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
                         </div>
-                        <div class="registration">
-                            Don't have an account yet?<br/>
-                            <a class="" href="pu/registro.xhtml">
-                                Create an account
-                            </a>
-                        </div>
+                        
                     </div>
 
                 </h:form>
 
 
-                -->
+                <!--
                 <form class="form-login" >
                     <h2 class="form-login-heading">Saras Transporte</h2>
                     <div class="login-wrap">
@@ -90,7 +80,7 @@
                     </div>
 
                 </form>
-                
+                -->
 
 
                 <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">

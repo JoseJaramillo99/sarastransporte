@@ -11,7 +11,7 @@ import sara.entity.Categoria;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Local
 public interface CategoriaFacadeLocal {

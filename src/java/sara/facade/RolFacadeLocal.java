@@ -11,7 +11,7 @@ import sara.entity.Rol;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Local
 public interface RolFacadeLocal {

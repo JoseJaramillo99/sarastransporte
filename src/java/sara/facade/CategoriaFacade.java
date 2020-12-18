@@ -12,7 +12,7 @@ import sara.entity.Categoria;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Stateless
 public class CategoriaFacade extends AbstractFacade<Categoria> implements CategoriaFacadeLocal {

@@ -12,7 +12,7 @@ import sara.entity.Rol;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Stateless
 public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal {

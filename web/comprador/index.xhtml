@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
         <ui:composition template="/WEB-INF/template/estrutura.xhtml">
-            
+            <ui:param name="nombreUsuario" value="#{usuarioSession.usuingresar.usulogin} "></ui:param>
             <ui:param name="ruta" value="comprador"></ui:param>
 
             <ui:define name="menuVertical">
@@ -14,9 +14,7 @@
             </ui:define>
 
             <ui:define name="areaTrabajo">
-
                 <ui:include src="areadetrabajo/areaTrabajo.xhtml"></ui:include>
-
             </ui:define>
 
             

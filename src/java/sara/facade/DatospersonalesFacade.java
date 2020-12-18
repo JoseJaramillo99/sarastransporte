@@ -12,7 +12,7 @@ import sara.entity.Datospersonales;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Stateless
 public class DatospersonalesFacade extends AbstractFacade<Datospersonales> implements DatospersonalesFacadeLocal {

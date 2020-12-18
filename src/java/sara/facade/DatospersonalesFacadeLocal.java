@@ -11,7 +11,7 @@ import sara.entity.Datospersonales;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Local
 public interface DatospersonalesFacadeLocal {

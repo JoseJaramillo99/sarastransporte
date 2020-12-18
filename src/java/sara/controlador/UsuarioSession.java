@@ -1,11 +1,14 @@
 package sara.controlador;
 
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import org.primefaces.PrimeFaces;
 import sara.entity.Usuario;
 import sara.facade.UsuarioFacadeLocal;
@@ -45,6 +48,19 @@ public class UsuarioSession implements Serializable {
             mensajeAlerta = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
         }
         PrimeFaces.current().executeScript(mensajeAlerta);
+    }
+    public void cerraSesion() {
+        usuingresar = null;
+        ExternalContext ext = FacesContext.getCurrentInstance().getExternalContext();
+        String ctxPath = ext.getRequestContextPath();
+
+        try {
+            ((HttpSession) ext.getSession(false)).invalidate();
+            ext.redirect(ctxPath + "/index.xhtml");
+        } catch (IOException e) {
+            System.out.println("Error UsuarioSesion:cerraSesion " + e.getMessage());
+        }
+
     }
 
     public String getUsuarioIn() {

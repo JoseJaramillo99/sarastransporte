@@ -11,7 +11,7 @@ import sara.entity.Usuario;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Local
 public interface UsuarioFacadeLocal {

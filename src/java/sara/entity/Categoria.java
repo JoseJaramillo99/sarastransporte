@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author mompo
+ * @author victo
  */
 @Entity
 @Table(name = "categoria")
@@ -44,7 +44,7 @@ public class Categoria implements Serializable {
     @Size(min = 1, max = 50)
     @Column(name = "catipo")
     private String catipo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "caid", fetch = FetchType.LAZY)
     private Collection<Vehiculo> vehiculoCollection;
 
     public Categoria() {
