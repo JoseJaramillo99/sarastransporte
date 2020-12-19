@@ -8,6 +8,7 @@ package sara.facade;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import sara.entity.Categoria;
 
 /**
@@ -27,6 +28,17 @@ public class CategoriaFacade extends AbstractFacade<Categoria> implements Catego
 
     public CategoriaFacade() {
         super(Categoria.class);
+    }
+    
+    @Override
+    public int cantidadVehiculosCategoria( int categoria){
+        try {
+            Query qt = em.createNativeQuery("SELECT COUNT(*) FROM vehiculo WHERE caid = ?1");
+            qt.setParameter(1, categoria);
+            return ((Number)qt.getSingleResult()).intValue();
+        } catch (Exception e) {
+            return 0;
+        }
     }
     
 }

@@ -5,9 +5,12 @@
  */
 package sara.facade;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import sara.entity.Vehiculo;
 
 /**
@@ -28,5 +31,17 @@ public class VehiculoFacade extends AbstractFacade<Vehiculo> implements Vehiculo
     public VehiculoFacade() {
         super(Vehiculo.class);
     }
+    
+    @Override
+    public List<Vehiculo> listaVehiculosPorcategoria(int fk_categoria){
+        try {
+            Query qt = em.createQuery("SELECT p FROM Vehiculo p WHERE p.caid.caid = :fk_categoria");
+            qt.setParameter("fk_categoria", fk_categoria);
+            return   qt.getResultList();
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
+    }
+    
     
 }

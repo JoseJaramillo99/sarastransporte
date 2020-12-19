@@ -8,12 +8,14 @@ package sara.controlador;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.mail.Part;
 import sara.entity.Categoria;
+import sara.entity.Vehiculo;
 import sara.facade.CategoriaFacadeLocal;
 import sara.facade.VehiculoFacadeLocal;
 
@@ -23,7 +25,7 @@ import sara.facade.VehiculoFacadeLocal;
  */
 @Named(value = "categoriaView")
 @ViewScoped
-public class CategoriaView implements Serializable{
+public class CategoriaView implements Serializable {
 
     @EJB
     private CategoriaFacadeLocal categoriaFacadeLocal;
@@ -35,11 +37,10 @@ public class CategoriaView implements Serializable{
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
     private ArrayList<Categoria> listaCategorias = new ArrayList<>();
     private Categoria categoriaSelect = new Categoria();
-    
-    
+
     public CategoriaView() {
     }
-    
+
     @PostConstruct
     public void cargaCategorias() {
         try {
@@ -49,7 +50,6 @@ public class CategoriaView implements Serializable{
             System.out.println("edu.webapp1966781b.controlador.CategoriasView.cargaCategorias() " + e.getMessage());
         }
     }
-    
 
     public void seleccionCategoria(int id) {
         try {
@@ -58,15 +58,23 @@ public class CategoriaView implements Serializable{
             System.out.println("edu.webapp1966781b.controlador.CategoriasView.seleccionCategoria() " + e.getMessage());
         }
     }
-    
-   
 
-    public VehiculoFacadeLocal getVehiculoFacadeLocal() {
-        return vehiculoFacadeLocal;
+    public int cantidadVehiculosCategoria(int fk_vehiculo) {
+        try {
+            return categoriaFacadeLocal.cantidadVehiculosCategoria(fk_vehiculo);
+        } catch (Exception e) {
+            System.out.println("edu.webapp1966781b.controlador.CategoriasView.catidadproductoscategoria() " + e.getMessage());
+            return 0;
+        }
     }
 
-    public void setVehiculoFacadeLocal(VehiculoFacadeLocal vehiculoFacadeLocal) {
-        this.vehiculoFacadeLocal = vehiculoFacadeLocal;
+    public List<Vehiculo> listaVehiculos() {
+        try {
+            return vehiculoFacadeLocal.listaVehiculosPorcategoria(categoriaSelect.getCaid());
+        } catch (Exception e) {
+            System.out.println("edu.webapp1966781b.controlador.CategoriasView.listaProductos() " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
     public Part getFilePart() {
@@ -100,6 +108,5 @@ public class CategoriaView implements Serializable{
     public void setCategoriaSelect(Categoria categoriaSelect) {
         this.categoriaSelect = categoriaSelect;
     }
-    
     
 }

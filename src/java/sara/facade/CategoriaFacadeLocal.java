@@ -29,5 +29,7 @@ public interface CategoriaFacadeLocal {
     List<Categoria> findRange(int[] range);
 
     int count();
+
+    public int cantidadVehiculosCategoria(int fk_vehiculo);
     
 }

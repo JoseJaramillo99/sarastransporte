@@ -36,9 +36,9 @@
             *********************************************************************************************************************************************************** -->
         <div id="login-page">
             <div class="container">
-                
+
                 <h:form class="form-login" >
-                    <h2 class="form-login-heading">sign in now</h2>
+                    <h2 class="form-login-heading">SARAS TRANSPORTE</h2>
                     <div class="login-wrap">
 
                         <h:inputText  value="#{usuarioSession.usuarioIn}" html5:type="email" class="form-control" html5:placeholder="Correo" html5:autofocus="true"/>
@@ -46,14 +46,10 @@
                         <br/>
                         <h:inputSecret  value="#{usuarioSession.passIn}" class="form-control" html5:placeholder="Clave"/>
                         <br/>
-                        <h:commandButton action="#{usuarioSession.inicioSession()}" class="btn btn-theme btn-block" value="SIGN IN"/>
+                        <h:commandButton action="#{usuarioSession.inicioSession()}" class="btn btn-theme btn-block" value="Acceder"/>
                         <hr/>
-                        <div class="login-social-link centered">
-                            <p>or you can sign in via your social network</p>
-                            <button class="btn btn-facebook" type="submit"><i class="fa fa-facebook"></i> Facebook</button>
-                            <button class="btn btn-twitter" type="submit"><i class="fa fa-twitter"></i> Twitter</button>
-                        </div>
-                        
+
+
                     </div>
 
                 </h:form>

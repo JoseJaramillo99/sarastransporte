@@ -40,7 +40,7 @@ public class UsuarioSession implements Serializable {
                 mensajeAlerta = "swal('Verifique sus datos', 'Intente de nuevo', 'error');";
             } else {
                 FacesContext facesContext = FacesContext.getCurrentInstance();
-                facesContext.getExternalContext().redirect("/sarastransporte/principal/index.xhtml");
+                facesContext.getExternalContext().redirect("/sarastransportador/principal/index.xhtml");
             }
 
         } catch (Exception e) {
