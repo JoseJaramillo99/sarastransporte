@@ -11,6 +11,7 @@ and open the template in the editor.
       xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"      
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
 
     <ui:composition>
 
@@ -132,9 +133,9 @@ and open the template in the editor.
                                                     <li>Estado: #{pt.vehestado}</li>
                                                 </ul>
 
-                                                <h:commandButton style="display: none" id="tb3#{pt.vehplaca}" action="#{vehiculoView.removerVehiculo(vehiRemov)}"></h:commandButton>
+                                                <h:commandButton style="display: none" id="tb3#{pt.vehplaca}" action="#{vehiculoView.removerVehiculo(pt)}"></h:commandButton>
 
-                                                <button type="button" onclick="$('#listaProductos\\:tb3#{pt.vehplaca}').click()" class="btn btn-round btn-danger">Borrar</button>
+                                                <button type="button" onclick="$('#listaVehiculos\\:tb3#{pt.vehplaca}').click()" class="btn btn-round btn-danger">Borrar</button>
 
                                             </div>
                                             <!-- end custombox -->
